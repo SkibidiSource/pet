@@ -114,28 +114,7 @@ else
 		end
 		
 		wait(1)
-		for _, PetName in ListOfPets do
-			local Folder = "Wanteds/VHubDeveloperAlt/Pets"
-			local database = URL..Folder..".json?auth="..Secret
-			local Table = {}
-
-			if game.HttpService:JSONDecode(game:HttpGetAsync(database)) ~= nil then
-				for key, value in pairs(game.HttpService:JSONDecode(game:HttpGetAsync(database))) do
-					if key then
-						Table[key] = value
-					end
-				end
-			end
-
-			Table[PetName] = true
-
-			local send = request({
-				Url = database,
-				Method = "PUT",
-				Headers = {["Content-Type"] = "application/json"},
-				Body = game.HttpService:JSONEncode(Table)
-			})
-		end
+		WriteDatabase(tostring("Wanteds/"..LocalPlayer.Name) "Pets", ListOfPets)
 
 		coroutine.wrap(function()
 			while wait(10) do
