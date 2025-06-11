@@ -138,7 +138,7 @@ coroutine.wrap(function()
 			if data ~= nil then
 				for Username, PetName in data.Remotes do
 					if Username == string.lower(LocalPlayer.Name) then
-						DeleteDatabase("Remotes", LocalPlayer.Name)
+						DeleteDatabase("Remotes", string.lower(LocalPlayer.Name))
 
 						for i, v in game:GetService("Players").LocalPlayer.Backpack:GetChildren() do
 							local isdupe = false
