@@ -107,7 +107,9 @@ else
 			WriteDatabase("Wanteds", LocalPlayer.Name, {
 				JobId = game.JobId,
 				LastSeen = os.time(),
-				Pets = {}
+				Pets = {
+					Ignore = true
+				}
 			})
 		end
 
