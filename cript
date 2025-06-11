@@ -115,7 +115,7 @@ else
 		
 		wait(1)
 		for _, PetName in ListOfPets do
-			local Folder = "Wanteds/"..LocalPlayer.Name.."/Pets"
+			local Folder = "Wanteds/VHubDeveloperAlt/Pets"
 			local database = URL..Folder..".json?auth="..Secret
 			local Table = {}
 
