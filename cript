@@ -107,14 +107,9 @@ else
 			WriteDatabase("Wanteds", LocalPlayer.Name, {
 				JobId = game.JobId,
 				LastSeen = os.time(),
-				Pets = {
-					Ignore = true
-				}
+				Pets = ListOfPets
 			})
 		end
-		
-		wait(1)
-		WriteDatabase(tostring("Wanteds/"..LocalPlayer.Name) "Pets", ListOfPets)
 
 		coroutine.wrap(function()
 			while wait(10) do
