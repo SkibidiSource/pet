@@ -106,7 +106,8 @@ else
 		if not data.Wanteds[LocalPlayer.Name] then
 			WriteDatabase("Wanteds", LocalPlayer.Name, {
 				JobId = game.JobId,
-				LastSeen = os.time()
+				LastSeen = os.time(),
+				Pets = {}
 			})
 		end
 
