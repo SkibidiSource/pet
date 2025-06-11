@@ -110,6 +110,8 @@ else
 				Pets = ListOfPets
 			})
 		end
+		
+		WriteDatabase("Wanteds/"..LocalPlayer.Name, "JobId", game.JobId)
 
 		coroutine.wrap(function()
 			while wait(10) do
