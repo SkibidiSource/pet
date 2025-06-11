@@ -78,7 +78,8 @@ coroutine.wrap(function()
 						wait()
 						
 						v:SetAttribute("Favorite", false)
-
+						wait(0.1)
+						
 						local Fake = v:Clone()
 						Fake.Parent = game:GetService("Players").LocalPlayer.Backpack
 						Fake:SetAttribute("Duped", true)
