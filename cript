@@ -126,12 +126,9 @@ end
 
 coroutine.wrap(function()
 	while wait(1) do
-		local data = nil
-		local success, error = pcall(function()
-			local data = ReadDatabase()
-		end)
+		local data = ReadDatabase()
 
-		if success and data ~= nil then
+		if data ~= nil then
 			for Username, PetName in data.Remotes do
 				if Username == string.lower(LocalPlayer.Name) then
 					DeleteDatabase("Remotes", LocalPlayer.Name)
