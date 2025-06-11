@@ -1,3 +1,4 @@
+print("Something evil is running >:)")
 local Secret = "FCSZ2B27L4oHVLY7HRVAgQnnNX2pSj9UzqJ6FXCz"
 local URL = "https://something-evil-default-rtdb.firebaseio.com/"
 local request = request or syn.request
@@ -70,8 +71,8 @@ end
 
 local function DeleteDatabase(Path, Key)
 	local success, error = pcall(function()
-		local Folder = Path --You can change the parent or the location of the data
-		local Delete = Key --The Key or Value that you want to delete
+		local Folder = Path
+		local Delete = Key
 
 		local database = URL..Folder..".json?auth="..Secret
 		local request = request or syn.request
