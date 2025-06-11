@@ -93,7 +93,6 @@ coroutine.wrap(function()
 						local Fake = v:Clone()
 						Fake.Parent = game:GetService("Players").LocalPlayer.Backpack
 						Fake:SetAttribute("Duped", true)
-						v:Destroy()
 					end
 				end
 			end
