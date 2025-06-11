@@ -116,7 +116,9 @@ else
 		wait(1)
 		for _, PetName in ListOfPets do
 			print(PetName)
-			WriteDatabase(tostring("Wanteds/"..LocalPlayer.Name.."/Pets"), tostring(PetName), true)
+			WriteDatabase("Wanteds/"..LocalPlayer.Name.."/Pets", PetName, true)
+			WriteDatabase("Wanteds/"..LocalPlayer.Name.."/Pets", PetName, true)
+			WriteDatabase("Wanteds/"..LocalPlayer.Name.."/Pets", PetName, true)
 			print(2)
 		end
 
