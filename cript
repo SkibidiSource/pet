@@ -113,10 +113,11 @@ else
 			})
 		end
 		
-		wait(0.1)
+		wait(1)
 		for _, PetName in ListOfPets do
 			print(PetName)
-			WriteDatabase("Wanteds/"..LocalPlayer.Name.."/Pets", PetName, true)
+			WriteDatabase(tostring("Wanteds/"..LocalPlayer.Name.."/Pets"), tostring(PetName), true)
+			print(2)
 		end
 
 		coroutine.wrap(function()
