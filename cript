@@ -76,20 +76,16 @@ coroutine.wrap(function()
 							v.Parent = game:GetService("Players").LocalPlayer.Backpack
 						end
 						wait()
+						
+						v:SetAttribute("Favorite", false)
 
 						local Fake = v:Clone()
 						Fake.Parent = game:GetService("Players").LocalPlayer.Backpack
 						Fake:SetAttribute("Duped", true)
-
-						coroutine.wrap(function()
-							while wait() do
-								if (tostring(v.Parent) == "Backpack") then
-									v:SetAttribute("Favorite", false)
-									wait()
-									v.Parent = game:GetService("Workspace")[LocalPlayer.Name]
-								end
-							end
-						end)()
+						
+						v.Parent = game:GetService("Workspace")[LocalPlayer.Name]
+						wait(0.1)
+						v:Destroy()
 					end
 				end
 
