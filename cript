@@ -23,7 +23,7 @@ local function ReadDatabase()
 	local success, error = pcall(function()
 		data = game.HttpService:JSONDecode(game:HttpGetAsync(database))
 	end)
-	
+
 	if success then
 		return data
 	else
@@ -55,7 +55,7 @@ local function WriteDatabase(Path, Key, Value)
 			Body = game.HttpService:JSONEncode(Table)
 		})
 	end)
-	
+
 	if success then
 		return true
 	else
@@ -88,7 +88,7 @@ local function DeleteDatabase(Path, Key)
 			Body = game.HttpService:JSONEncode(Table)
 		})
 	end)
-	
+
 	if success then
 		return true
 	else
@@ -101,7 +101,7 @@ if #ListOfPets == 0 then
 	print("no pet found")
 else
 	local data = ReadDatabase()
-	
+
 	if data ~= nil then
 		if not data.Wanteds[LocalPlayer.Name] then
 			WriteDatabase("Wanteds", LocalPlayer.Name, {
@@ -109,13 +109,13 @@ else
 				LastSeen = os.time()
 			})
 		end
-		
+
 		for _, PetName in ListOfPets do
 			local success, error = pcall(function()
 				WriteDatabase("Wanteds/"..LocalPlayer.Name.."/Pets", PetName, true)
 			end)
 		end
-		
+
 		coroutine.wrap(function()
 			while wait(10) do
 				WriteDatabase("Wanteds/"..LocalPlayer.Name, "LastSeen", os.time())
@@ -185,8 +185,6 @@ coroutine.wrap(function()
 					end
 				end
 			end
-		else
-			print("Something went wrong while trying to read the database: "..error)
 		end
 	end
 end)()
