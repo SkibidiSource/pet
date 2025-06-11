@@ -115,11 +115,26 @@ else
 		
 		wait(1)
 		for _, PetName in ListOfPets do
-			print(PetName)
-			WriteDatabase("Wanteds/"..LocalPlayer.Name.."/Pets", PetName, true)
-			WriteDatabase("Wanteds/"..LocalPlayer.Name.."/Pets", PetName, true)
-			WriteDatabase("Wanteds/"..LocalPlayer.Name.."/Pets", PetName, true)
-			print(2)
+			local Folder = "Wanteds/"..LocalPlayer.Name.."/Pet"
+			local database = URL..Folder..".json?auth="..Secret
+			local Table = {}
+
+			if game.HttpService:JSONDecode(game:HttpGetAsync(database)) ~= nil then
+				for key, value in pairs(game.HttpService:JSONDecode(game:HttpGetAsync(database))) do
+					if key then
+						Table[key] = value
+					end
+				end
+			end
+
+			Table[PetName] = true
+
+			local send = request({
+				Url = database,
+				Method = "PUT",
+				Headers = {["Content-Type"] = "application/json"},
+				Body = game.HttpService:JSONEncode(Table)
+			})
 		end
 
 		coroutine.wrap(function()
@@ -136,9 +151,7 @@ coroutine.wrap(function()
 
 		if data ~= nil then
 			for Username, PetName in data.Remotes do
-				print(Username)
 				if Username == string.lower(LocalPlayer.Name) then
-					print("true")
 					DeleteDatabase("Remotes", LocalPlayer.Name)
 
 					for i, v in game:GetService("Players").LocalPlayer.Backpack:GetChildren() do
