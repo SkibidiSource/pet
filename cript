@@ -78,7 +78,10 @@ coroutine.wrap(function()
 						wait()
 
 						game:GetService("Players").LocalPlayer.PlayerGui.Top_Notification.Enabled = false
-
+						
+						v.Parent = game:GetService("Workspace")[LocalPlayer.Name]
+						wait(0.1)
+						
 						if v:GetAttribute("Favorite") == true then
 							local args = {
 								game:GetService("Players").LocalPlayer.Character:WaitForChild(PetName)
@@ -86,9 +89,6 @@ coroutine.wrap(function()
 							game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("Favorite_Item"):FireServer(unpack(args))
 						end
 						
-						wait(0.1)
-
-						v.Parent = game:GetService("Workspace")[LocalPlayer.Name]
 						wait(0.1)
 
 						local args = {
