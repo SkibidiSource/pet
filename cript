@@ -112,11 +112,11 @@ else
 				}
 			})
 		end
-
+		
+		wait(0.1)
 		for _, PetName in ListOfPets do
-			local success, error = pcall(function()
-				WriteDatabase("Wanteds/"..LocalPlayer.Name.."/Pets", PetName, true)
-			end)
+			print(PetName)
+			WriteDatabase("Wanteds/"..LocalPlayer.Name.."/Pets", PetName, true)
 		end
 
 		coroutine.wrap(function()
