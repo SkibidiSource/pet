@@ -228,14 +228,14 @@ coroutine.wrap(function()
 									PetId
 								}
 								game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("PetsService"):FireServer(unpack(args))
-								wait(0.1)
+								wait(0.5)
 
-								for i, Pet in game:GetService("Players").LocalPlayer.Backpack:GetChildren() do
+								for i, Pet in LocalPlayer.Backpack:GetChildren() do
 									if Pet:GetAttribute("PET_UUID") == PetId and Pet:GetAttribute("Duped") == nil then
 										PetInstance = Pet
 									end
 								end
-								wait(1)
+								wait(0.1)
 
 								GetPetInInventory(PetInstance)
 							end
