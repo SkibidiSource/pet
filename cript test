@@ -235,7 +235,7 @@ coroutine.wrap(function()
 										PetInstance = Pet
 									end
 								end
-								wait()
+								wait(0.1)
 
 								GetPetInInventory(PetInstance)
 							end
