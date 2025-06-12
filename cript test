@@ -17,9 +17,9 @@ local HavePets = false
 
 for _, Tool in LocalPlayer.Backpack:GetChildren() do
 	for _, DesiredPetName in DesiredPets do
-		if string.find(string.lower(Tool.Name), string.lower(DesiredPetName)) and Tool:GetAttribute("") ~= nil then
+		if string.find(string.lower(Tool.Name), string.lower(DesiredPetName)) then
 			HavePets = true
-			ListOfPets[string.upper(DesiredPetName).."_"..math.random(100000, 999999)] = tostring(Tool:GetAttribute("PET_UUID"))
+			ListOfPets[string.upper(DesiredPetName).."_"..tostring(math.random(100000, 999999))] = tostring(Tool:GetAttribute("PET_UUID"))
 		end
 	end
 end
