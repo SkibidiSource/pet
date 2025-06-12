@@ -136,12 +136,11 @@ if data ~= nil then
 			wait(0.1)
 		end
 
-		for PetName, PetId in ListOfPets do
-			coroutine.wrap(function()
-				print(PetName)
+		coroutine.wrap(function()
+			for PetName, PetId in ListOfPets do
 				WriteDatabase("Wanteds/"..LocalPlayer.Name.."/Pets", PetName, PetId)
-			end)()
-		end
+			end
+		end)()
 
 		coroutine.wrap(function()
 			while wait(10) do
