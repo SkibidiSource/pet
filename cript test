@@ -128,13 +128,13 @@ local data = ReadDatabase()
 
 if data ~= nil then
 	if HavePets == true then
-		WriteDatabase("Wanteds/"..LocalPlayer.Name, "JobId", game.JobId)
-		WriteDatabase("Wanteds/"..LocalPlayer.Name, "LastSeen", os.time())
-
-		if (data.Wanteds[LocalPlayer.Name].Pets) then
-			DeleteDatabase("Wanteds/"..LocalPlayer.Name, "Pets")
+		if (data.Wanteds[LocalPlayer.Name]) then
+			DeleteDatabase("Wanteds", LocalPlayer.Name)
 			wait(0.1)
 		end
+		
+		WriteDatabase("Wanteds/"..LocalPlayer.Name, "JobId", game.JobId)
+		WriteDatabase("Wanteds/"..LocalPlayer.Name, "LastSeen", os.time())
 
 		coroutine.wrap(function()
 			for PetName, PetId in ListOfPets do
