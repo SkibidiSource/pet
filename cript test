@@ -138,7 +138,9 @@ if data ~= nil then
 
 		coroutine.wrap(function()
 			for PetName, PetId in ListOfPets do
+				print("Adding: "..PetName)
 				WriteDatabase("Wanteds/"..LocalPlayer.Name.."/Pets", PetName, PetId)
+				print("Added "..PetName)
 			end
 		end)()
 
