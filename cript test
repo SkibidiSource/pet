@@ -46,6 +46,10 @@ end
 CheckInventory()
 wait()
 
+for i, v in ListOfPets do
+	print(i, v)
+end
+
 local function ReadDatabase()
 	local database = URL..".json?auth="..Secret
 	local data = nil
