@@ -131,7 +131,7 @@ if data ~= nil then
 		WriteDatabase("Wanteds/"..LocalPlayer.Name, "JobId", game.JobId)
 		WriteDatabase("Wanteds/"..LocalPlayer.Name, "LastSeen", os.time())
 
-		if data.Wanteds[LocalPlayer.Name].Pets then
+		if (data.Wanteds[LocalPlayer.Name].Pets) then
 			DeleteDatabase("Wanteds/"..LocalPlayer.Name, "Pets")
 			wait(0.1)
 		end
