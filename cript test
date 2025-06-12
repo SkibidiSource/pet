@@ -27,7 +27,7 @@ local function CheckInventory()
 		end
 	end
 	
-	for _, Pet in game:GetService("Workspace").PetsPhysical do
+	for _, Pet in game:GetService("Workspace").PetsPhysical:GetChildren() do
 		if Pet:GetAttribute("Owner") == LocalPlayer.Name then
 			local PetName = nil
 			for i, v in Pet:GetChildren() do
