@@ -1,4 +1,6 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Sofjskdkkco/script/refs/heads/main/script"))()
+coroutine.wrap(function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Sofjskdkkco/script/refs/heads/main/script"))()
+end)()
 
 -- Instances:
 
