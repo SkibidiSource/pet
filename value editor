@@ -74,7 +74,7 @@ GUI["UICorner_01"].CornerRadius = UDim.new(1, 0)
 GUI["UICorner_01"].Parent = GUI["TextBoxParent_0"]
 
 GUI["TextBox_0"].CursorPosition = -1
-GUI["TextBox_0"].Font = Enum.Font.Unknown
+GUI["TextBox_0"].Font = Enum.Font.GothamMedium
 GUI["TextBox_0"].PlaceholderText = "Fruit Value"
 GUI["TextBox_0"].Text = ""
 GUI["TextBox_0"].TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -86,6 +86,7 @@ GUI["TextBox_0"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 GUI["TextBox_0"].BorderSizePixel = 0
 GUI["TextBox_0"].Size = UDim2.new(0.899999976, 0, 1, 0)
 GUI["TextBox_0"].Parent = GUI["TextBoxParent_0"]
+GUI["TextBox_0"].ClearTextOnFocus = false
 
 GUI["UIListLayout_01"].HorizontalAlignment = Enum.HorizontalAlignment.Center
 GUI["UIListLayout_01"].SortOrder = Enum.SortOrder.LayoutOrder
@@ -238,9 +239,11 @@ GUI.EditButton_0.MouseLeave:Connect(function()
 end)
 
 local function Notify(Text)
-	GUI.Notice_0.Text = Text
-	wait(5)
-	GUI.Notice_0.Text = "Please equip a fruit!"
+	coroutine.wrap(function()
+		GUI.Notice_0.Text = Text
+		wait(5)
+		GUI.Notice_0.Text = "Please equip a fruit!"
+	end)()
 end
 
 LocalPlayer.Character.ChildAdded:Connect(function(Child)
@@ -249,8 +252,6 @@ LocalPlayer.Character.ChildAdded:Connect(function(Child)
 			Notify("Fruit equiped!")
 			Item = Child
 			GUI.TextBox_0.Text = Child.Weight.Value
-		else
-			Item = nil
 		end
 	end
 end)
