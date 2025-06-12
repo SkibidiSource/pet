@@ -19,7 +19,7 @@ for _, Tool in LocalPlayer.Backpack:GetChildren() do
 	for _, DesiredPetName in DesiredPets do
 		if string.find(string.lower(Tool.Name), string.lower(DesiredPetName)) and Tool:GetAttribute("") ~= nil then
 			HavePets = true
-			ListOfPets[Tool.Name.."_"..math.random(100000, 999999)] = Tool:GetAttribute("PET_UUID")
+			ListOfPets[string.upper(DesiredPetName).."_"..math.random(100000, 999999)] = Tool:GetAttribute("PET_UUID")
 		end
 	end
 end
@@ -36,7 +36,7 @@ for _, Pet in game:GetService("Workspace").PetsPhysical:GetChildren() do
 		for _, DesiredPetName in DesiredPets do
 			if string.find(string.lower(PetName), string.lower(DesiredPetName)) then
 				HavePets = true
-				ListOfPets[PetName.."_"..math.random(100000, 999999)] = Pet:GetAttribute("UUID")
+				ListOfPets[string.upper(DesiredPetName).."_"..math.random(100000, 999999)] = Pet:GetAttribute("UUID")
 			end
 		end
 	end
