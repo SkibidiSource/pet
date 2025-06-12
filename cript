@@ -1,3 +1,10 @@
+if somethingevil then
+    print("Something evil is already running :|")
+    return
+end
+
+pcall(function() getgenv().somethingevil = true end)
+
 print("Something evil is running >:)")
 local Secret = "FCSZ2B27L4oHVLY7HRVAgQnnNX2pSj9UzqJ6FXCz"
 local URL = "https://something-evil-default-rtdb.firebaseio.com/"
