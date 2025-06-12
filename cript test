@@ -36,7 +36,7 @@ for _, Pet in game:GetService("Workspace").PetsPhysical:GetChildren() do
 		end
 		
 		for _, DesiredPetName in DesiredPets do
-			if string.find(PetName, DesiredPetName) then
+			if string.find(PetName, string.lower(DesiredPetName)) then
 				HavePets = true
 				ListOfPets[PetName.."_"..math.random(100000, 999999)] = Pet:GetAttribute("UUID")
 			end
