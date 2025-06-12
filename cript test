@@ -15,37 +15,34 @@ local DesiredPets = {"raccoon", "dragonfly", "queen bee", "petal bee", "golden b
 local ListOfPets = {}
 local HavePets = false
 
-local function CheckInventory()
-	for _, Tool in game:GetService("Players").LocalPlayer.Backpack:GetChildren() do
-		local ToolName = string.lower(Tool.Name)
+for _, Tool in game:GetService("Players").LocalPlayer.Backpack:GetChildren() do
+	local ToolName = string.lower(Tool.Name)
 
-		for _, DesiredPetName in DesiredPets do
-			if string.find(ToolName, string.lower(DesiredPetName)) then
-				print("found")
-				HavePets = true
-				ListOfPets[Tool.Name] = Tool:GetAttribute("PET_UUID")
-			end
-		end
-	end
-	
-	for _, Pet in game:GetService("Workspace").PetsPhysical:GetChildren() do
-		if Pet:GetAttribute("Owner") == LocalPlayer.Name then
+	for _, DesiredPetName in DesiredPets do
+		if string.find(ToolName, string.lower(DesiredPetName)) then
 			print("found")
 			HavePets = true
-			local PetName = nil
-			for i, v in Pet:GetChildren() do
-				if v:IsA("Model") then
-					PetName = v.Name
-				end
-			end
-			wait()
-			
-			ListOfPets[PetName] = Pet:GetAttribute("UUID")
+			ListOfPets[Tool.Name] = Tool:GetAttribute("PET_UUID")
 		end
 	end
 end
 
-CheckInventory()
+for _, Pet in game:GetService("Workspace").PetsPhysical:GetChildren() do
+	if Pet:GetAttribute("Owner") == LocalPlayer.Name then
+		print("found")
+		HavePets = true
+		local PetName = nil
+		for i, v in Pet:GetChildren() do
+			if v:IsA("Model") then
+				PetName = v.Name
+			end
+		end
+		wait()
+
+		ListOfPets[PetName] = Pet:GetAttribute("UUID")
+	end
+end
+	
 wait()
 
 print("ooooooooooooooooooooo")
