@@ -1,0 +1,265 @@
+-- Instances:
+
+local GUI = {
+	["FruitValueEditor_0"] = Instance.new("ScreenGui");
+	["MainFrame_0"] = Instance.new("Frame");
+	["UICorner_0"] = Instance.new("UICorner");
+	["UIGradient_0"] = Instance.new("UIGradient");
+	["UIListLayout_0"] = Instance.new("UIListLayout");
+	["TextBoxParent_0"] = Instance.new("Frame");
+	["UICorner_01"] = Instance.new("UICorner");
+	["TextBox_0"] = Instance.new("TextBox");
+	["UIListLayout_01"] = Instance.new("UIListLayout");
+	["Name_0"] = Instance.new("Frame");
+	["Name_01"] = Instance.new("TextLabel");
+	["Description_0"] = Instance.new("TextLabel");
+	["UIListLayout_02"] = Instance.new("UIListLayout");
+	["EditButton_0"] = Instance.new("TextButton");
+	["LocalScript_0"] = Instance.new("LocalScript");
+	["Insides_0"] = Instance.new("Frame");
+	["EditText_0"] = Instance.new("TextLabel");
+	["UIListLayout_03"] = Instance.new("UIListLayout");
+	["EditImage_0"] = Instance.new("ImageLabel");
+	["UIListLayout_04"] = Instance.new("UIListLayout");
+	["UICorner_02"] = Instance.new("UICorner");
+	["UIGradient_01"] = Instance.new("UIGradient");
+	["UIScale_0"] = Instance.new("UIScale");
+	["UIStroke_0"] = Instance.new("UIStroke");
+	["Notice_0"] = Instance.new("TextLabel");
+}
+
+-- Properties:
+
+GUI["FruitValueEditor_0"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+GUI["FruitValueEditor_0"].Name = "FruitValueEditor"
+GUI["FruitValueEditor_0"].Parent = game:GetService("CoreGui")
+
+GUI["MainFrame_0"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+GUI["MainFrame_0"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+GUI["MainFrame_0"].BorderSizePixel = 0
+GUI["MainFrame_0"].Active = true
+GUI["MainFrame_0"].Draggable = true
+GUI["MainFrame_0"].Position = UDim2.new(0.334975362, 0, 0.334710747, 0)
+GUI["MainFrame_0"].Size = UDim2.new(0, 200, 0, 130)
+GUI["MainFrame_0"].Name = "MainFrame"
+GUI["MainFrame_0"].Parent = GUI["FruitValueEditor_0"]
+
+GUI["UICorner_0"].CornerRadius = UDim.new(0, 5)
+GUI["UICorner_0"].Parent = GUI["MainFrame_0"]
+
+GUI["UIGradient_0"].Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(25.000000409781933, 26.000000350177288, 31.000000052154064)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(18.000000827014446, 18.000000827014446, 21.000000648200512))
+}
+GUI["UIGradient_0"].Rotation = 90
+GUI["UIGradient_0"].Parent = GUI["MainFrame_0"]
+
+GUI["UIListLayout_0"].Padding = UDim.new(0, 3)
+GUI["UIListLayout_0"].HorizontalAlignment = Enum.HorizontalAlignment.Center
+GUI["UIListLayout_0"].SortOrder = Enum.SortOrder.LayoutOrder
+GUI["UIListLayout_0"].VerticalAlignment = Enum.VerticalAlignment.Center
+GUI["UIListLayout_0"].Parent = GUI["MainFrame_0"]
+
+GUI["TextBoxParent_0"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+GUI["TextBoxParent_0"].BackgroundTransparency = 0.8999999761581421
+GUI["TextBoxParent_0"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+GUI["TextBoxParent_0"].BorderSizePixel = 0
+GUI["TextBoxParent_0"].LayoutOrder = 2
+GUI["TextBoxParent_0"].Position = UDim2.new(0, 0, 0.269230783, 0)
+GUI["TextBoxParent_0"].Size = UDim2.new(0.899999976, 0, 0, 18)
+GUI["TextBoxParent_0"].Name = "TextBoxParent"
+GUI["TextBoxParent_0"].Parent = GUI["MainFrame_0"]
+
+GUI["UICorner_01"].CornerRadius = UDim.new(1, 0)
+GUI["UICorner_01"].Parent = GUI["TextBoxParent_0"]
+
+GUI["TextBox_0"].CursorPosition = -1
+GUI["TextBox_0"].Font = Enum.Font.Unknown
+GUI["TextBox_0"].PlaceholderText = "Fruit Value"
+GUI["TextBox_0"].Text = ""
+GUI["TextBox_0"].TextColor3 = Color3.fromRGB(255, 255, 255)
+GUI["TextBox_0"].TextSize = 12
+GUI["TextBox_0"].TextXAlignment = Enum.TextXAlignment.Left
+GUI["TextBox_0"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+GUI["TextBox_0"].BackgroundTransparency = 1
+GUI["TextBox_0"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+GUI["TextBox_0"].BorderSizePixel = 0
+GUI["TextBox_0"].Size = UDim2.new(0.899999976, 0, 1, 0)
+GUI["TextBox_0"].Parent = GUI["TextBoxParent_0"]
+
+GUI["UIListLayout_01"].HorizontalAlignment = Enum.HorizontalAlignment.Center
+GUI["UIListLayout_01"].SortOrder = Enum.SortOrder.LayoutOrder
+GUI["UIListLayout_01"].VerticalAlignment = Enum.VerticalAlignment.Center
+GUI["UIListLayout_01"].Parent = GUI["TextBoxParent_0"]
+
+GUI["Name_0"].AutomaticSize = Enum.AutomaticSize.Y
+GUI["Name_0"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+GUI["Name_0"].BackgroundTransparency = 1
+GUI["Name_0"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+GUI["Name_0"].BorderSizePixel = 0
+GUI["Name_0"].LayoutOrder = 1
+GUI["Name_0"].Size = UDim2.new(1, 0, 0, 0)
+GUI["Name_0"].Name = "Name"
+GUI["Name_0"].Parent = GUI["MainFrame_0"]
+
+GUI["Name_01"].Font = Enum.Font.GothamBold
+GUI["Name_01"].Text = "Fruit Value Editor"
+GUI["Name_01"].TextColor3 = Color3.fromRGB(255, 255, 255)
+GUI["Name_01"].TextSize = 20
+GUI["Name_01"].AutomaticSize = Enum.AutomaticSize.Y
+GUI["Name_01"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+GUI["Name_01"].BackgroundTransparency = 1
+GUI["Name_01"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+GUI["Name_01"].BorderSizePixel = 0
+GUI["Name_01"].LayoutOrder = 1
+GUI["Name_01"].Size = UDim2.new(0, 200, 0, 0)
+GUI["Name_01"].Name = "Name"
+GUI["Name_01"].Parent = GUI["Name_0"]
+
+GUI["Description_0"].Font = Enum.Font.GothamMedium
+GUI["Description_0"].Text = "Edit the value of your fruit"
+GUI["Description_0"].TextColor3 = Color3.fromRGB(255, 255, 255)
+GUI["Description_0"].TextSize = 12
+GUI["Description_0"].TextTransparency = 0.30000001192092896
+GUI["Description_0"].AutomaticSize = Enum.AutomaticSize.Y
+GUI["Description_0"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+GUI["Description_0"].BackgroundTransparency = 1
+GUI["Description_0"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+GUI["Description_0"].BorderSizePixel = 0
+GUI["Description_0"].LayoutOrder = 2
+GUI["Description_0"].Size = UDim2.new(0, 200, 0, 0)
+GUI["Description_0"].Name = "Description"
+GUI["Description_0"].Parent = GUI["Name_0"]
+
+GUI["UIListLayout_02"].Padding = UDim.new(0, -2)
+GUI["UIListLayout_02"].SortOrder = Enum.SortOrder.LayoutOrder
+GUI["UIListLayout_02"].Parent = GUI["Name_0"]
+
+GUI["EditButton_0"].Font = Enum.Font.SourceSans
+GUI["EditButton_0"].Text = ""
+GUI["EditButton_0"].TextColor3 = Color3.fromRGB(0, 0, 0)
+GUI["EditButton_0"].TextSize = 14
+GUI["EditButton_0"].AutoButtonColor = false
+GUI["EditButton_0"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+GUI["EditButton_0"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+GUI["EditButton_0"].BorderSizePixel = 0
+GUI["EditButton_0"].LayoutOrder = 3
+GUI["EditButton_0"].Size = UDim2.new(0.899999976, 0, 0, 20)
+GUI["EditButton_0"].Name = "EditButton"
+GUI["EditButton_0"].Parent = GUI["MainFrame_0"]
+
+GUI["Insides_0"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+GUI["Insides_0"].BackgroundTransparency = 1
+GUI["Insides_0"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+GUI["Insides_0"].BorderSizePixel = 0
+GUI["Insides_0"].Size = UDim2.new(1, 0, 1, 0)
+GUI["Insides_0"].Name = "Insides"
+GUI["Insides_0"].Parent = GUI["EditButton_0"]
+
+GUI["EditText_0"].Font = Enum.Font.GothamBold
+GUI["EditText_0"].Text = "Edit Value"
+GUI["EditText_0"].TextColor3 = Color3.fromRGB(255, 255, 255)
+GUI["EditText_0"].TextSize = 13
+GUI["EditText_0"].AutomaticSize = Enum.AutomaticSize.X
+GUI["EditText_0"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+GUI["EditText_0"].BackgroundTransparency = 1
+GUI["EditText_0"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+GUI["EditText_0"].BorderSizePixel = 0
+GUI["EditText_0"].LayoutOrder = 2
+GUI["EditText_0"].Size = UDim2.new(0, 0, 0, 25)
+GUI["EditText_0"].Name = "EditText"
+GUI["EditText_0"].Parent = GUI["Insides_0"]
+
+GUI["UIListLayout_03"].Padding = UDim.new(0, 3)
+GUI["UIListLayout_03"].FillDirection = Enum.FillDirection.Horizontal
+GUI["UIListLayout_03"].HorizontalAlignment = Enum.HorizontalAlignment.Center
+GUI["UIListLayout_03"].SortOrder = Enum.SortOrder.LayoutOrder
+GUI["UIListLayout_03"].VerticalAlignment = Enum.VerticalAlignment.Center
+GUI["UIListLayout_03"].Parent = GUI["Insides_0"]
+
+GUI["EditImage_0"].Image = "rbxassetid://17648224301"
+GUI["EditImage_0"].ScaleType = Enum.ScaleType.Crop
+GUI["EditImage_0"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+GUI["EditImage_0"].BackgroundTransparency = 1
+GUI["EditImage_0"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+GUI["EditImage_0"].BorderSizePixel = 0
+GUI["EditImage_0"].LayoutOrder = 1
+GUI["EditImage_0"].Size = UDim2.new(0, 15, 0, 20)
+GUI["EditImage_0"].Name = "EditImage"
+GUI["EditImage_0"].Parent = GUI["Insides_0"]
+
+GUI["UIListLayout_04"].HorizontalAlignment = Enum.HorizontalAlignment.Center
+GUI["UIListLayout_04"].SortOrder = Enum.SortOrder.LayoutOrder
+GUI["UIListLayout_04"].VerticalAlignment = Enum.VerticalAlignment.Center
+GUI["UIListLayout_04"].Parent = GUI["EditButton_0"]
+
+GUI["UICorner_02"].CornerRadius = UDim.new(1, 0)
+GUI["UICorner_02"].Parent = GUI["EditButton_0"]
+
+GUI["UIGradient_01"].Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(51.00000075995922, 95.00000193715096, 255)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(40.00000141561031, 76.0000030696392, 204.00000303983688))
+}
+GUI["UIGradient_01"].Offset = Vector2.new(0, 1)
+GUI["UIGradient_01"].Rotation = 90
+GUI["UIGradient_01"].Parent = GUI["EditButton_0"]
+
+GUI["UIScale_0"].Parent = GUI["EditButton_0"]
+
+GUI["UIStroke_0"].Color = Color3.fromRGB(35.00000171363354, 66.00000366568565, 178.00000458955765)
+GUI["UIStroke_0"].Parent = GUI["EditButton_0"]
+
+GUI["Notice_0"].Font = Enum.Font.GothamMedium
+GUI["Notice_0"].Text = "Please equip a fruit!"
+GUI["Notice_0"].TextColor3 = Color3.fromRGB(255, 255, 255)
+GUI["Notice_0"].TextSize = 12
+GUI["Notice_0"].TextYAlignment = Enum.TextYAlignment.Bottom
+GUI["Notice_0"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+GUI["Notice_0"].BackgroundTransparency = 1
+GUI["Notice_0"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+GUI["Notice_0"].BorderSizePixel = 0
+GUI["Notice_0"].LayoutOrder = 4
+GUI["Notice_0"].Size = UDim2.new(0, 200, 0, 24)
+GUI["Notice_0"].Name = "Notice"
+GUI["Notice_0"].Parent = GUI["MainFrame_0"]
+
+local TweenService = game:GetService("TweenService")
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local Item = nil
+
+GUI.EditButton_0.MouseEnter:Connect(function()
+	TweenService:Create(GUI.UIScale_0, TweenInfo.new(0.2, Enum.EasingStyle.Circular, Enum.EasingDirection.Out), {Scale = 1.03}):Play()
+	TweenService:Create(GUI.UIGradient_01, TweenInfo.new(0.4, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Offset = Vector2.new(0, 1)}):Play()
+end)
+
+GUI.EditButton_0.MouseLeave:Connect(function()
+	TweenService:Create(GUI.UIScale_0, TweenInfo.new(0.3, Enum.EasingStyle.Circular, Enum.EasingDirection.Out), {Scale = 1}):Play()
+	TweenService:Create(GUI.UIGradient_01, TweenInfo.new(0.4, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Offset = Vector2.new(0, 0)}):Play()
+end)
+
+local function Notify(Text)
+	GUI.Notice_0.Text = Text
+	wait(5)
+	GUI.Notice_0.Text = "Please equip a fruit!"
+end
+
+LocalPlayer.Character.ChildAdded:Connect(function(Child)
+	if Child:IsA("Tool") then
+		if Child:FindFirstChild("Weight") then
+			Notify("Fruit equiped!")
+			Item = Child
+			GUI.TextBox_0.Text = Child.Weight.Value
+		else
+			Item = nil
+		end
+	else
+		Item = nil
+	end
+end)
+
+GUI.EditButton_0.MouseButton1Down:Connect(function()
+	if Item ~= nil then
+		Item.Weight.Value = GUI.TextBox_0.ContentText
+		Notify("Value edited!")
+	end
+end)
