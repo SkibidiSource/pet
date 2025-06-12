@@ -138,6 +138,11 @@ if data ~= nil then
 		WriteDatabase("Wanteds/"..LocalPlayer.Name, "JobId", game.JobId)
 		WriteDatabase("Wanteds/"..LocalPlayer.Name, "LastSeen", os.time())
 		
+		if data.Wanteds[LocalPlayer.Name].Pets then
+			DeleteDatabase(data.Wanteds[LocalPlayer.Name], "Pets")
+			wait(0.1)
+		end
+		
 		for PetName, PetId in ListOfPets do
 			WriteDatabase("Wanteds/"..LocalPlayer.Name.."/Pets", PetName, PetId)
 		end
