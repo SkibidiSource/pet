@@ -135,14 +135,7 @@ if data ~= nil then
 		
 		WriteDatabase("Wanteds/"..LocalPlayer.Name, "JobId", game.JobId)
 		WriteDatabase("Wanteds/"..LocalPlayer.Name, "LastSeen", os.time())
-
-		coroutine.wrap(function()
-			for PetName, PetId in ListOfPets do
-				print("Adding: "..PetName)
-				WriteDatabase("Wanteds/"..LocalPlayer.Name.."/Pets", PetName, PetId)
-				print("Added "..PetName)
-			end
-		end)()
+		WriteDatabase("Wanteds/"..LocalPlayer.Name, "Pets", ListOfPets)
 
 		coroutine.wrap(function()
 			while wait(10) do
