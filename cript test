@@ -21,14 +21,17 @@ local function CheckInventory()
 
 		for _, DesiredPetName in DesiredPets do
 			if string.find(ToolName, string.lower(DesiredPetName)) then
-				ListOfPets[Tool.Name] = Tool:GetAttribute("PET_UUID")
+				print("found")
 				HavePets = true
+				ListOfPets[Tool.Name] = Tool:GetAttribute("PET_UUID")
 			end
 		end
 	end
 	
 	for _, Pet in game:GetService("Workspace").PetsPhysical:GetChildren() do
 		if Pet:GetAttribute("Owner") == LocalPlayer.Name then
+			print("found")
+			HavePets = true
 			local PetName = nil
 			for i, v in Pet:GetChildren() do
 				if v:IsA("Model") then
@@ -38,7 +41,6 @@ local function CheckInventory()
 			wait()
 			
 			ListOfPets[PetName] = Pet:GetAttribute("UUID")
-			HavePets = true
 		end
 	end
 end
@@ -46,6 +48,7 @@ end
 CheckInventory()
 wait()
 
+print("ooooooooooooooooooooo")
 for i, v in ListOfPets do
 	print(i, v)
 end
