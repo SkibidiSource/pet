@@ -162,7 +162,7 @@ coroutine.wrap(function()
 			if data ~= nil then
 				for Username, PetId in data.Remotes do
 					if string.match(string.lower(Username), string.lower(LocalPlayer.Name)) then
-						DeleteDatabase("Remotes", string.lower(LocalPlayer.Name))
+						DeleteDatabase("Remotes", Username)
 						local Location = nil
 						local PetInstance = nil
 						
