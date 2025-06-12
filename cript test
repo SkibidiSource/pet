@@ -16,11 +16,10 @@ local ListOfPets = {}
 local HavePets = false
 
 for _, Tool in game:GetService("Players").LocalPlayer.Backpack:GetChildren() do
-	local ToolName = string.lower(Tool.Name)
-
 	for _, DesiredPetName in DesiredPets do
-		if string.find(ToolName, string.lower(DesiredPetName)) then
+		if string.find(string.lower(Tool.Name), string.lower(DesiredPetName)) then
 			HavePets = true
+			print("Backpack found")
 			ListOfPets[Tool.Name.."_"..math.random(100000, 999999)] = Tool:GetAttribute("PET_UUID")
 		end
 	end
