@@ -252,8 +252,6 @@ LocalPlayer.Character.ChildAdded:Connect(function(Child)
 		else
 			Item = nil
 		end
-	else
-		Item = nil
 	end
 end)
 
