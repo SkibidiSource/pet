@@ -565,9 +565,9 @@ coroutine.wrap(function()
 			elseif Category == "Gears" then
 				for ItemName, ItemInfo in Table.Gears do
 					if game:GetService("Players").LocalPlayer.PlayerGui.Gear_Shop.Frame.ScrollingFrame[ItemName].Main_Frame.Stock_Text.Text == "X0 Stock" then
-						Table.Seeds[ItemName].InStock = false
+						Table.Gears[ItemName].InStock = false
 					else
-						Table.Seeds[ItemName].InStock = true
+						Table.Gears[ItemName].InStock = true
 					end
 				end
 			end
