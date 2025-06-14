@@ -476,6 +476,8 @@ for Category, Items in Table do
 		Clone.Parent = GUI.ScrollingFrame_0
 		Clone.LayoutOrder = ItemInfo.Order+1
 		Clone.Visible = true
+		Clone.ItemImage.Image = ItemInfo.Image
+		Clone.ItemName.Text = ItemName
 		Clone.Checkbox.MouseButton1Down:Connect(function()
 			if ItemInfo.AutoBuy == true then
 				ItemInfo.AutoBuy = false
