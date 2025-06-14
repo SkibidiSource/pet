@@ -329,23 +329,53 @@ coroutine.wrap(function()
 end)()
 
 for Category, Items in Table do
-	if Category == "Seeds" then
-		for SeedName, SeedInfo in Items do
-			local Clone = GUI.Template_0:Clone()
+	for ItemName, ItemInfo in Items do
+		local Clone = GUI.Template_0:Clone()
 
-			Clone.Name = SeedName
-			Clone.Parent = GUI.ScrollingFrame_0
-			Clone.LayoutOrder = SeedInfo.Order+1
-			Clone.Visible = true
-			Clone.Checkbox.MouseButton1Down:Connect(function()
-				if SeedInfo.AutoBuy == true then
-					SeedInfo.AutoBuy = false
-					Clone.Checkbox.ImageTransparency = 1
-				else
-					SeedInfo.AutoBuy = true
-					Clone.Checkbox.ImageTransparency = 0
+		Clone.Name = ItemName
+		Clone.Parent = GUI.ScrollingFrame_0
+		Clone.LayoutOrder = ItemInfo.Order+1
+		Clone.Visible = true
+		Clone.Checkbox.MouseButton1Down:Connect(function()
+			if ItemInfo.AutoBuy == true then
+				ItemInfo.AutoBuy = false
+				Clone.Checkbox.ImageTransparency = 1
+			else
+				ItemInfo.AutoBuy = true
+				Clone.Checkbox.ImageTransparency = 0
+			end
+		end)
+	end
+end
+
+local AutoBuyFunction = nil
+
+local function AutoBuyFunction()
+	while wait() do
+		for Category, Items in Table do
+			if Category == "Seeds" then
+				for SeedName, SeedInfo in Items do
+					if SeedInfo.AutoBuy == true and SeedInfo.InStock == true then
+						game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("BuySeedStock"):FireServer(SeedName)
+					end
 				end
-			end)
+			end
 		end
 	end
 end
+
+local function Notify(Text)
+	coroutine.wrap(function()
+		GUI.Notice_0.Text = Text
+	end)()
+end
+
+GUI.StartPauseButton_0.MouseButton1Down:Connect(function()
+	if AutoBuyFunction == nil then
+		AutoBuyFunction = AutoBuyFunction()
+		Notify("Script running!")
+	else
+		AutoBuyFunction = nil
+		Notify("Script paused.")
+	end
+end)
