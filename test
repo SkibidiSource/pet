@@ -261,7 +261,7 @@ GUI["ItemName_0"].BackgroundTransparency = 1
 GUI["ItemName_0"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 GUI["ItemName_0"].BorderSizePixel = 0
 GUI["ItemName_0"].LayoutOrder = 2
-GUI["ItemName_0"].Size = UDim2.new(0, 130, 0, 20)
+GUI["ItemName_0"].Size = UDim2.new(0, 128, 0, 20)
 GUI["ItemName_0"].Name = "ItemName"
 GUI["ItemName_0"].Parent = GUI["Template_0"]
 
@@ -465,7 +465,7 @@ local Table = {
 	
 	Gears = {
 		["Watering Can"] = {
-			Image = "rbxassetid://118200191025691",
+			Image = "rbxassetid://140223014467344",
 			InStock = false,
 			Order = 1,
 			AutoBuy = false
@@ -544,7 +544,7 @@ local Table = {
 		["Friendship Pot"] = {
 			Image = "rbxassetid://106888620308041",
 			InStock = false,
-			Order = 11,
+			Order = 12,
 			AutoBuy = false
 		},
 	}
