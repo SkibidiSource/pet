@@ -348,7 +348,8 @@ for Category, Items in Table do
 	end
 end
 
-local AutoBuyFunction = nil
+local AutoBuyFunction
+local IsScriptRunning = false
 
 local function AutoBuyFunction()
 	while wait() do
@@ -371,11 +372,13 @@ local function Notify(Text)
 end
 
 GUI.StartPauseButton_0.MouseButton1Down:Connect(function()
-	if AutoBuyFunction == nil then
+	if IsScriptRunning == false then
+		IsScriptRunning = true
 		AutoBuyFunction = AutoBuyFunction()
 		Notify("Script running!")
 	else
-		AutoBuyFunction = nil
+		IsScriptRunning = false
+		AutoBuyFunction:Disconnect()
 		Notify("Script paused.")
 	end
 end)
