@@ -343,10 +343,10 @@ for ItemCategory, Item in Table do
 		local function Function()
 			if ItemInfo.AutoBuy == false then
 				ItemInfo.AutoBuy = true
-				GUI.ScrollingFrame_0[ItemName].Checkbox.ImageTransparency = 0
+				GUI.ScrollingFrame_0:FindFirstChild(ItemName).Checkbox.ImageTransparency = 0
 			else
 				ItemInfo.AutoBuy = false
-				GUI.ScrollingFrame_0[ItemName].Checkbox.ImageTransparency = 1
+				GUI.ScrollingFrame_0:FindFirstChild(ItemName).Checkbox.ImageTransparency = 1
 			end
 		end
 		
