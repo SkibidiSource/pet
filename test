@@ -328,24 +328,24 @@ coroutine.wrap(function()
 	end
 end)()
 
-local function CreateOptionSeed(Name)
-	local Clone = GUI.Template_0:Clone()
-	
-	Clone.Name = Name
-	Clone.Parent = GUI.ScrollingFrame_0
-	Clone.LayoutOrder = Table.Seeds[Name]+1
-	Clone.Visible = true
-	Clone.Checkbox.MouseButton1Down:Connect(function()
-		if Table.Seeds[Name].AutoBuy == true then
-			Table.Seeds[Name].AutoBuy = false
-			Clone.Checkbox.ImageTransparency = 1
-		else
-			Table.Seeds[Name].AutoBuy = true
-			Clone.Checkbox.ImageTransparency = 0
-		end
-	end)
-end
+for Category, Items in Table do
+	if Category == "Seeds" then
+		for SeedName, SeedInfo in Items do
+			local Clone = GUI.Template_0:Clone()
 
-for ItemName, _ in Table.Seeds do
-	CreateOptionSeed(ItemName)
+			Clone.Name = SeedName
+			Clone.Parent = GUI.ScrollingFrame_0
+			Clone.LayoutOrder = SeedInfo.Order+1
+			Clone.Visible = true
+			Clone.Checkbox.MouseButton1Down:Connect(function()
+				if SeedInfo.AutoBuy == true then
+					SeedInfo.AutoBuy = false
+					Clone.Checkbox.ImageTransparency = 1
+				else
+					SeedInfo.AutoBuy = true
+					Clone.Checkbox.ImageTransparency = 0
+				end
+			end)
+		end
+	end
 end
