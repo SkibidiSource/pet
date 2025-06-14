@@ -335,7 +335,7 @@ local function CreateOption(Name, Order, IsA)
 	Clone.Parent = GUI.ScrollingFrame_0
 	Clone.LayoutOrder = Order+1
 	Clone.Visible = true
-	Clone.CheckBox.MouseButton1Down:Connect(function()
+	Clone.Checkbox.MouseButton1Down:Connect(function()
 		if Table[IsA].AutoBuy == true then
 			Table[IsA].AutoBuy = false
 			Clone.Checkbox.ImageTransparency = 1
