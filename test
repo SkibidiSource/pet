@@ -45,7 +45,7 @@ GUI["MainFrame_0"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 GUI["MainFrame_0"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 GUI["MainFrame_0"].BorderSizePixel = 0
 GUI["MainFrame_0"].Position = UDim2.new(0.334975362, 0, 0.334710747, 0)
-GUI["MainFrame_0"].Size = UDim2.new(0, 200, 0, 262)
+GUI["MainFrame_0"].Size = UDim2.new(0, 200, 0, 270)
 GUI["MainFrame_0"].Name = "MainFrame"
 GUI["MainFrame_0"].Parent = GUI["AutoBuyStocks_0"]
 GUI["MainFrame_0"].Active = true
@@ -208,6 +208,7 @@ GUI["Border_0"].Parent = GUI["MainFrame_0"]
 
 GUI["ScrollingFrame_0"].AutomaticCanvasSize = Enum.AutomaticSize.Y
 GUI["ScrollingFrame_0"].CanvasSize = UDim2.new(0, 0, 0, 0)
+GUI["ScrollingFrame_0"].ScrollingDirection = Enum.ScrollingDirection.Y
 GUI["ScrollingFrame_0"].ScrollBarThickness = 2
 GUI["ScrollingFrame_0"].Active = true
 GUI["ScrollingFrame_0"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -453,29 +454,142 @@ local Table = {
 			Order = 21,
 			AutoBuy = false
 		},
+		
+		["Sugar Apple"] = {
+			Image = "rbxassetid://118200191025691",
+			InStock = false,
+			Order = 22,
+			AutoBuy = false
+		},
+	},
+	
+	Gears = {
+		["Watering Can"] = {
+			Image = "rbxassetid://118200191025691",
+			InStock = false,
+			Order = 1,
+			AutoBuy = false
+		},
+		
+		["Trowel"] = {
+			Image = "rbxassetid://115261280019001",
+			InStock = false,
+			Order = 2,
+			AutoBuy = false
+		},
+		
+		["Recall Wrench"] = {
+			Image = "rbxassetid://98327818593168",
+			InStock = false,
+			Order = 3,
+			AutoBuy = false
+		},
+		
+		["Basic Sprinkler"] = {
+			Image = "rbxassetid://120314005864914",
+			InStock = false,
+			Order = 4,
+			AutoBuy = false
+		},
+		
+		["Advanced Sprinkler"] = {
+			Image = "rbxassetid://90193997839883",
+			InStock = false,
+			Order = 5,
+			AutoBuy = false
+		},
+		
+		["Godly Sprinkler"] = {
+			Image = "rbxassetid://75442797836082",
+			InStock = false,
+			Order = 6,
+			AutoBuy = false
+		},
+		
+		["Lightning Rod"] = {
+			Image = "rbxassetid://125433095334047",
+			InStock = false,
+			Order = 7,
+			AutoBuy = false
+		},
+		
+		["Master Sprinkler"] = {
+			Image = "rbxassetid://98504519094449",
+			InStock = false,
+			Order = 8,
+			AutoBuy = false
+		},
+		
+		["Cleaning Spray"] = {
+			Image = "rbxassetid://134458369683392",
+			InStock = false,
+			Order = 9,
+			AutoBuy = false
+		},
+		
+		["Favorite Tool"] = {
+			Image = "rbxassetid://129676033321965",
+			InStock = false,
+			Order = 10,
+			AutoBuy = false
+		},
+		
+		["Harvest Tool"] = {
+			Image = "rbxassetid://99521037861537",
+			InStock = false,
+			Order = 11,
+			AutoBuy = false
+		},
+		
+		["Friendship Pot"] = {
+			Image = "rbxassetid://106888620308041",
+			InStock = false,
+			Order = 11,
+			AutoBuy = false
+		},
 	}
 }
 
--- Seed Stock Checker:
+-- Stock Checker:
 coroutine.wrap(function()
 	while wait() do
-		for ItemName, ItemInfo in Table.Seeds do
-			if game:GetService("Players").LocalPlayer.PlayerGui.Seed_Shop.Frame.ScrollingFrame[ItemName].Main_Frame.Stock_Text.Text == "X0 Stock" then
-				Table.Seeds[ItemName].InStock = false
-			else
-				Table.Seeds[ItemName].InStock = true
+		for Category, Items in Table do
+			if Category == "Seeds" then
+				for ItemName, ItemInfo in Items do
+					if game:GetService("Players").LocalPlayer.PlayerGui.Seed_Shop.Frame.ScrollingFrame[ItemName].Main_Frame.Stock_Text.Text == "X0 Stock" then
+						Table.Seeds[ItemName].InStock = false
+					else
+						Table.Seeds[ItemName].InStock = true
+					end
+				end
+			elseif Category == "Gears" then
+				for ItemName, ItemInfo in Table.Gears do
+					if game:GetService("Players").LocalPlayer.PlayerGui.Gear_Shop.Frame.ScrollingFrame[ItemName].Main_Frame.Stock_Text.Text == "X0 Stock" then
+						Table.Seeds[ItemName].InStock = false
+					else
+						Table.Seeds[ItemName].InStock = true
+					end
+				end
 			end
 		end
 	end
 end)()
 
 for Category, Items in Table do
+	local Order = 0
+	
+	if Category == "Seeds" then
+		Order = 1
+	elseif Category == "Gears" then
+		Order = 100
+	end
+	
 	for ItemName, ItemInfo in Items do
 		local Clone = GUI.Template_0:Clone()
 
 		Clone.Name = ItemName
 		Clone.Parent = GUI.ScrollingFrame_0
-		Clone.LayoutOrder = ItemInfo.Order+1
+		Clone.LayoutOrder = ItemInfo.Order+Order
 		Clone.Visible = true
 		Clone.ItemImage.Image = ItemInfo.Image
 		Clone.ItemName.Text = ItemName
@@ -503,6 +617,12 @@ coroutine.wrap(function()
 							game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("BuySeedStock"):FireServer(SeedName)
 						end
 					end
+				elseif Category == "Gears"  then
+					for GearName, GearInfo in Items do
+						if GearInfo.AutoBuy == true and GearInfo.InStock == true then
+							game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("BuyGearStock"):FireServer(GearName)
+						end
+					end
 				end
 			end
 		end
@@ -516,9 +636,9 @@ end
 GUI.StartPauseButton_0.MouseButton1Down:Connect(function()
 	if IsScriptRunning == false then
 		IsScriptRunning = true
-		Notify("Script running!")
+		Notify("🟢 Script running!")
 	else
 		IsScriptRunning = false
-		Notify("Script stopped...")
+		Notify("🔴 Script stopped...")
 	end
 end)
