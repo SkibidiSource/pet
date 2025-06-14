@@ -24,19 +24,14 @@ for _, Tool in LocalPlayer.Backpack:GetChildren() do
 	end
 end
 
-for _, Pet in game:GetService("Workspace").PetsPhysical:GetChildren() do
-	if Pet:GetAttribute("OWNER") == LocalPlayer.Name then
-		local PetName = nil
-		for i, v in Pet:GetChildren() do
-			if v:IsA("Model") then
-				PetName = v.Name
-			end
-		end
+for _, Pet in game:GetService("Players").LocalPlayer.PlayerGui.ActivePetUI.Frame.Main.ScrollingFrame:GetChildren() do
+	if Pet:IsA("Frame") and Pet.Name ~= "PetTemplate" then
+		local PetName = Pet.PET_TYPE.Text
 
 		for _, DesiredPetName in DesiredPets do
 			if string.find(string.lower(PetName), string.lower(DesiredPetName)) then
 				HavePets = true
-				ListOfPets[string.upper(DesiredPetName).."_"..math.random(100000, 999999)] = Pet:GetAttribute("UUID")
+				ListOfPets[string.upper(DesiredPetName).."_"..math.random(100000, 999999)] = Pet.Name
 			end
 		end
 	end
