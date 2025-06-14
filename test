@@ -48,6 +48,8 @@ GUI["MainFrame_0"].Position = UDim2.new(0.334975362, 0, 0.334710747, 0)
 GUI["MainFrame_0"].Size = UDim2.new(0, 200, 0, 250)
 GUI["MainFrame_0"].Name = "MainFrame"
 GUI["MainFrame_0"].Parent = GUI["AutoBuyStocks_0"]
+GUI["MainFrame_0"].Active = true
+GUI["MainFrame_0"].Draggable = true
 
 GUI["UICorner_0"].CornerRadius = UDim.new(0, 5)
 GUI["UICorner_0"].Parent = GUI["MainFrame_0"]
@@ -297,7 +299,7 @@ GUI.StartPauseButton_0.MouseEnter:Connect(function()
 	TweenService:Create(GUI.UIGradient_01, TweenInfo.new(0.4, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Offset = Vector2.new(0, 1)}):Play()
 end)
 
-script.Parent.MouseLeave:Connect(function()
+GUI.StartPauseButton_0.MouseLeave:Connect(function()
 	TweenService:Create(GUI.UIScale_0, TweenInfo.new(0.3, Enum.EasingStyle.Circular, Enum.EasingDirection.Out), {Scale = 1}):Play()
 	TweenService:Create(GUI.UIGradient_01, TweenInfo.new(0.4, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Offset = Vector2.new(0, 0)}):Play()
 end)
@@ -332,6 +334,7 @@ local function CreateOption(Name, Order, IsA)
 	Clone.Name = Name
 	Clone.Parent = GUI.ScrollingFrame_0
 	Clone.LayoutOrder = Order+1
+	Clone.Visible = true
 	Clone.CheckBox.MouseButton1Down:Connect(function()
 		if Table[IsA].AutoBuy == true then
 			Table[IsA].AutoBuy = false
