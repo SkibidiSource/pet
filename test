@@ -327,29 +327,37 @@ coroutine.wrap(function()
 		end
 	end
 end)()
-	
+
 local function CreateOption(Name, Order, Function)
 	local Clone = GUI.Template_0:Clone()
-
+	
 	Clone.Name = Name
 	Clone.Parent = GUI.ScrollingFrame_0
 	Clone.LayoutOrder = Order+1
 	Clone.Visible = true
 	Clone.Checkbox.MouseButton1Down:Connect(Function)
+	
+	for _, Item in Table do
+		if Item == Name then
+			coroutine.wrap(function()
+				while wait() do
+					if Item.AutoBuy == true then
+						Clone.Checkbox.ImageTransparency = 0
+					else
+						Clone.Checkbox.ImageTransparency = 1
+					end
+				end
+			end)()
+		end
+	end 
 end
 
-for ItemCategory, Item in Table do
-	for ItemName, ItemInfo in Item do
-		local function Function()
-			if ItemInfo.AutoBuy == false then
-				ItemInfo.AutoBuy = true
-				GUI.ScrollingFrame_0:FindFirstChild(ItemName).Checkbox.ImageTransparency = 0
-			else
-				ItemInfo.AutoBuy = false
-				GUI.ScrollingFrame_0:FindFirstChild(ItemName).Checkbox.ImageTransparency = 1
-			end
+for ItemCategory, ItemName in Table do
+	CreateOption(ItemName, ItemName.Order+1, function()
+		if ItemName.AutoBuy == true then
+			ItemName.AutoBuy = false
+		else
+			ItemName.AutoBuy = true
 		end
-		
-		CreateOption(ItemName, ItemInfo.Order, Function())
-	end
+	end)
 end
