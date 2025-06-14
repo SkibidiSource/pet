@@ -338,10 +338,10 @@ local function CreateOption(Name, Order, IsA)
 	Clone.CheckBox.MouseButton1Down:Connect(function()
 		if Table[IsA].AutoBuy == true then
 			Table[IsA].AutoBuy = false
-			Clone.Checkbox_0.ImageTransparency = 1
+			Clone.Checkbox.ImageTransparency = 1
 		else
 			Table[IsA].AutoBuy = true
-			Clone.Checkbox_0.ImageTransparency = 1
+			Clone.Checkbox.ImageTransparency = 1
 		end
 	end)
 end
