@@ -311,7 +311,147 @@ local Table = {
 			InStock = false,
 			Order = 1,
 			AutoBuy = false
-		}
+		},
+		
+		Strawberry = {
+			Image = "rbxassetid://74378273547859",
+			InStock = false,
+			Order = 2,
+			AutoBuy = false
+		},
+
+		Blueberry = {
+			Image = "rbxassetid://71345798241707",
+			InStock = false,
+			Order = 3,
+			AutoBuy = false
+		},
+		
+		["Orange Tulip"] = {
+			Image = "rbxassetid://82303880837226",
+			InStock = false,
+			Order = 4,
+			AutoBuy = false
+		},
+
+		Tomato = {
+			Image = "rbxassetid://137684825172236",
+			InStock = false,
+			Order = 5,
+			AutoBuy = false
+		},
+
+		Corn = {
+			Image = "rbxassetid://83672513462287",
+			InStock = false,
+			Order = 6,
+			AutoBuy = false
+		},
+
+		Daffodil = {
+			Image = "rbxassetid://99820436058162",
+			InStock = false,
+			Order = 7,
+			AutoBuy = false
+		},
+
+		Watermelon = {
+			Image = "rbxassetid://114381314987347",
+			InStock = false,
+			Order = 8,
+			AutoBuy = false
+		},
+
+		Pumpkin = {
+			Image = "rbxassetid://88091808467980",
+			InStock = false,
+			Order = 9,
+			AutoBuy = false
+		},
+		
+		Apple = {
+			Image = "rbxassetid://74877667823372",
+			InStock = false,
+			Order = 10,
+			AutoBuy = false
+		},
+		
+		Bamboo = {
+			Image = "rbxassetid://91033803349257",
+			InStock = false,
+			Order = 11,
+			AutoBuy = false
+		},
+		
+		Coconut = {
+			Image = "rbxassetid://135321477950169",
+			InStock = false,
+			Order = 12,
+			AutoBuy = false
+		},
+		
+		Cactus = {
+			Image = "rbxassetid://135918568621376",
+			InStock = false,
+			Order = 13,
+			AutoBuy = false
+		},
+		
+		["Dragon Fruit"] = {
+			Image = "rbxassetid://134494387120918",
+			InStock = false,
+			Order = 14,
+			AutoBuy = false
+		},
+		
+		Mango = {
+			Image = "rbxassetid://80632913421879",
+			InStock = false,
+			Order = 15,
+			AutoBuy = false
+		},
+		
+		Grape = {
+			Image = "rbxassetid://116026952946757",
+			InStock = false,
+			Order = 16,
+			AutoBuy = false
+		},
+		
+		Mushroom = {
+			Image = "rbxassetid://120910099642804",
+			InStock = false,
+			Order = 17,
+			AutoBuy = false
+		},
+		
+		Pepper = {
+			Image = "rbxassetid://123388647334376",
+			InStock = false,
+			Order = 18,
+			AutoBuy = false
+		},
+		
+		Cacao = {
+			Image = "rbxassetid://92101177778874",
+			InStock = false,
+			Order = 19,
+			AutoBuy = false
+		},
+		
+		Beanstalk = {
+			Image = "rbxassetid://110487410542265",
+			InStock = false,
+			Order = 20,
+			AutoBuy = false
+		},
+		
+		["Ember Lily"] = {
+			Image = "rbxassetid://92345442415663",
+			InStock = false,
+			Order = 21,
+			AutoBuy = false
+		},
 	}
 }
 
