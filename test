@@ -320,9 +320,9 @@ coroutine.wrap(function()
 	while wait() do
 		for ItemName, ItemInfo in Table.Seeds do
 			if game:GetService("Players").LocalPlayer.PlayerGui.Seed_Shop.Frame.ScrollingFrame[ItemName].Main_Frame.Stock_Text.Text == "X0 Stock" then
-				ItemInfo.InStock = false
+				Table.Seeds[ItemName].InStock = false
 			else
-				ItemInfo.InStock = true
+				Table.Seeds[ItemName].InStock = true
 			end
 		end
 	end
