@@ -366,19 +366,17 @@ local function AutoBuyFunction()
 end
 
 local function Notify(Text)
-	coroutine.wrap(function()
-		GUI.Notice_0.Text = Text
-	end)()
+	GUI.Notice_0.Text = Text
 end
 
 GUI.StartPauseButton_0.MouseButton1Down:Connect(function()
 	if IsScriptRunning == false then
 		IsScriptRunning = true
-		AutoBuyFunction = AutoBuyFunction()
 		Notify("Script running!")
+		AutoBuyFunction = AutoBuyFunction()
 	else
 		IsScriptRunning = false
-		AutoBuyFunction:Disconnect()
 		Notify("Script paused.")
+		AutoBuyFunction = nil
 	end
 end)
