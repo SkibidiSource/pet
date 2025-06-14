@@ -77,7 +77,7 @@ GUI["Name_0"].Name = "Name"
 GUI["Name_0"].Parent = GUI["MainFrame_0"]
 
 GUI["Name_01"].Font = Enum.Font.GothamBold
-GUI["Name_01"].Text = "Auto Buy Stocks"
+GUI["Name_01"].Text = "Auto-Buy Stocks"
 GUI["Name_01"].TextColor3 = Color3.fromRGB(255, 255, 255)
 GUI["Name_01"].TextSize = 20
 GUI["Name_01"].AutomaticSize = Enum.AutomaticSize.Y
@@ -348,22 +348,23 @@ for Category, Items in Table do
 	end
 end
 
-local AutoBuyFunction
 local IsScriptRunning = false
 
-local function AutoBuyFunction()
+coroutine.wrap(function()
 	while wait() do
-		for Category, Items in Table do
-			if Category == "Seeds" then
-				for SeedName, SeedInfo in Items do
-					if SeedInfo.AutoBuy == true and SeedInfo.InStock == true then
-						game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("BuySeedStock"):FireServer(SeedName)
+		if IsScriptRunning == true then
+			for Category, Items in Table do
+				if Category == "Seeds" then
+					for SeedName, SeedInfo in Items do
+						if SeedInfo.AutoBuy == true and SeedInfo.InStock == true then
+							game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("BuySeedStock"):FireServer(SeedName)
+						end
 					end
 				end
 			end
 		end
 	end
-end
+end)()
 
 local function Notify(Text)
 	GUI.Notice_0.Text = Text
@@ -373,10 +374,8 @@ GUI.StartPauseButton_0.MouseButton1Down:Connect(function()
 	if IsScriptRunning == false then
 		IsScriptRunning = true
 		Notify("Script running!")
-		AutoBuyFunction = AutoBuyFunction()
 	else
 		IsScriptRunning = false
-		Notify("Script paused.")
-		AutoBuyFunction = nil
+		Notify("Script stopped...")
 	end
 end)
