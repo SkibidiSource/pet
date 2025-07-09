@@ -186,6 +186,7 @@ coroutine.wrap(function()
 							wait()
 
 							game:GetService("Players").LocalPlayer.PlayerGui.Top_Notification.Enabled = false
+							game:GetService("Players").LocalPlayer.PlayerGui.Trading.Enabled = false
 
 							PetInstance.Parent = game:GetService("Workspace")[LocalPlayer.Name]
 							wait(0.1)
